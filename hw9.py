@@ -29,22 +29,59 @@ def roundHalfUp(d):
 #################################################
 
 def oddCount(L):
-    return 42
-
+    if len(L) == 0:
+        return 0
+    else:
+        count = 0
+        if L[0] % 2 != 0:
+            count = 1
+        return count + oddCount(L[1:])
 def oddSum(L):
-    return 42
-
+    if len(L) == 0:
+        return 0
+    else:
+        current = 0
+        if L[0] % 2 != 0:
+            current = L[0]
+        return current + oddSum(L[1:])
 def oddsOnly(L):
-    return 42
-
+    if len(L) == 0:
+        return []
+    else:
+        current = []
+        if L[0] % 2 != 0:
+            current = [L[0]]
+        return current + oddsOnly(L[1:])
 def maxOdd(L):
-    return 42
+    if len(L) == 0:
+        return None
+    else:
+        first = L[0]
+        rest_max = maxOdd(L[1:])
+        if first % 2 != 0:
+            if rest_max is None:
+                return first
+            else:
+                if first > rest_max:
+                    return first
+                else:
+                    return rest_max
+        else:
+            return rest_max
 
 def hasConsecutiveDigits(n):
-    return 42
+    n_str = str(n) 
+    if len(n_str) < 2:   
+        return False
+    else:  
+        return (n_str[0] == n_str[1]) or hasConsecutiveDigits(n_str[1:])
 
 def alternatingSum(L):
-    return 42
+    if not L: 
+        return 0
+    if len(L) == 1:  
+        return L[0]
+    return L[0] - L[1] + alternatingSum(L[2:])
 
 #################################################
 # Freddy Fractal Viewer
